@@ -226,5 +226,16 @@ public class ValidatorUtils {
     }
 
 
+    /**
+     *   url 형식 validator, http:// & https://
+     */
+    public static boolean url(String src){
+        if (src==null) return false;
+
+
+        return Pattern.matches(
+                "^\\d{3}-\\d{3}|\\d{5}$",
+                src);
+    }
 
 }
