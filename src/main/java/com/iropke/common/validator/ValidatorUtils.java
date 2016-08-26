@@ -30,7 +30,7 @@ public class ValidatorUtils {
         if (src==null) return false;
 
         return Pattern.matches(
-                "[0-9a-zA-Z]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$",
+                "^[a-z0-9A-Z_-]*@[a-z0-9A-Z]*.[a-zA-Z.]*$",
                 src);
     }
 
