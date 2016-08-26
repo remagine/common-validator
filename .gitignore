@@ -1,0 +1,12 @@
+*.bak
+*~
+Thumbs.db
+/.classpath
+/.project
+/bin/
+/.settings/
+/config/application-dev.properties
+/.gradle/
+/build/
+/erd/
+/.checkstyle
