@@ -332,6 +332,7 @@ public class ValidatorBasicTest {
         Assert.assertFalse("url is calendar..google.com/calendar/render#main_7" , ValidatorUtils.url("calendar.google.com/calendar/render#main_7"));
     }
 
+
     @Test
     public void testPath(){
         Assert.assertTrue("path is d:/user/user.ryhtm" , ValidatorUtils.path("d:/user/user.ryhtm"));
@@ -368,4 +369,5 @@ public class ValidatorBasicTest {
         Assert.assertFalse("imagePath is https://user\\user.gif" , ValidatorUtils.imagePath("//user\\user"));
 
     }
+
 }
