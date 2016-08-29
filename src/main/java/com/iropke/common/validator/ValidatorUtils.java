@@ -183,30 +183,30 @@ public class ValidatorUtils {
     }
 
     /**
-     *   정수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false)
+     *   정수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false) , 앞뒤공백 제거(src.trim())
      */
     public static boolean integerNumber(String src){
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
                 "^-?(0|[1-9][0-9]*)*$",
-                src);
+                src.trim());
     }
 
     /**
-     *   실수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false, 숫자 자리수 제한 X)
+     *   실수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false, 숫자 자리수 제한 X), 앞뒤공백 제거(src.trim())
      */
     public static boolean floatNumber(String src){
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
                 "^-?(0|[1-9][0-9]*)(\\.[0-9]+)$",
-                src);
+                src.trim());
     }
 
 
     /**
-     *   실수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false, 숫자 자리수 제한 있음)
+     *   실수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false, 숫자 자리수 제한 있음), 앞뒤공백 제거(src.trim())
      */
     public static boolean floatNumber(String src, int size){
         if (src==null || src.trim().length() == 0) return false;
@@ -214,11 +214,11 @@ public class ValidatorUtils {
 
         return Pattern.matches(
                 "^[-]?(0|[1-9][0-9]*)(\\.[0-9]+)$",
-                src);
+                src.trim());
     }
 
     /**
-     *   우편변호 형식 validator, ###-### 구우편번호 or 5자리 신우편번호
+     *   우편변호 형식 validator, ###-### 구우편번호 or 5자리 신우편번호, 앞뒤공백 제거(src.trim())
      */
     public static boolean zipcode(String src){
         if (src==null || src.trim().length() == 0) return false;
@@ -226,7 +226,7 @@ public class ValidatorUtils {
 
         return Pattern.matches(
                 "^\\d{3}-\\d{3}|\\d{5}$",
-                src);
+                src.trim());
     }
 
 
@@ -238,8 +238,8 @@ public class ValidatorUtils {
 
 
         return Pattern.matches(
-                "^(http://|https://)(\\/\\w+)+\\.\\w+(\\?(\\w+=[\\w\\d]+(&\\w+=[\\w\\d]+)+)+)*$",
-                src);
+                "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$",
+                src.trim());
     }
 
     /**

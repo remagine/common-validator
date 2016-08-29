@@ -248,4 +248,87 @@ public class ValidatorBasicTest {
         Assert.assertFalse("number is -1234567890" , ValidatorUtils.number("-1234567890"));
         Assert.assertFalse("number is 1234567890$" , ValidatorUtils.number("1234567890$"));
     }
+
+    @Test
+    public void testIntegerNumber(){
+        Assert.assertTrue("integerNumber is -123456789" , ValidatorUtils.integerNumber("-123456789"));
+        Assert.assertTrue("integerNumber is 1234567890" , ValidatorUtils.integerNumber("1234567890"));
+        Assert.assertTrue("integerNumber is    1234567890" , ValidatorUtils.integerNumber("   1234567890"));
+        Assert.assertTrue("integerNumber is    1234567890    " , ValidatorUtils.integerNumber("   1234567890   "));
+        Assert.assertTrue("integerNumber is 0" , ValidatorUtils.integerNumber("0"));
+        Assert.assertTrue("integerNumber is -0" , ValidatorUtils.integerNumber("-0"));
+        Assert.assertFalse("integerNumber is 123 4567890" , ValidatorUtils.integerNumber("123 4567890"));
+        Assert.assertFalse("integerNumber is 123.4567890" , ValidatorUtils.integerNumber("123.4567890"));
+        Assert.assertFalse("integerNumber is +1234567890" , ValidatorUtils.integerNumber("+1234567890"));
+        Assert.assertFalse("integerNumber is --1234567890" , ValidatorUtils.integerNumber("--1234567890"));
+        Assert.assertFalse("integerNumber is 1234567890$" , ValidatorUtils.integerNumber("1234567890$"));
+    }
+
+    @Test
+    public void testFloatNumber(){
+        Assert.assertTrue("floatNumber is -123456789.0" , ValidatorUtils.floatNumber("-123456789.0"));
+        Assert.assertTrue("floatNumber is 1234567890.0" , ValidatorUtils.floatNumber("1234567890.0"));
+        Assert.assertTrue("floatNumber is 1234567890.0234" , ValidatorUtils.floatNumber("1234567890.0234"));
+        Assert.assertTrue("floatNumber is 1234567890.000000" , ValidatorUtils.floatNumber("1234567890.000000"));
+        Assert.assertTrue("floatNumber is 1234567890.0" , ValidatorUtils.floatNumber("1234567890.00012"));
+        Assert.assertTrue("floatNumber is    1234567890.0" , ValidatorUtils.floatNumber("   1234567890.0"));
+        Assert.assertTrue("floatNumber is    1234567890.0    " , ValidatorUtils.floatNumber("   1234567890.0   "));
+        Assert.assertTrue("floatNumber is 0.0" , ValidatorUtils.floatNumber("0.0"));
+        Assert.assertTrue("floatNumber is -0.0" , ValidatorUtils.floatNumber("-0.0"));
+        Assert.assertFalse("floatNumber is 123 4567890" , ValidatorUtils.floatNumber("123 4567890.0"));
+        Assert.assertFalse("floatNumber is 123.4567890" , ValidatorUtils.floatNumber("123.4567890.0"));
+        Assert.assertFalse("floatNumber is +1234567890" , ValidatorUtils.floatNumber("+1234567890.0"));
+        Assert.assertFalse("floatNumber is --1234567890" , ValidatorUtils.floatNumber("--1234567890.0"));
+        Assert.assertFalse("floatNumber is 1234567890$" , ValidatorUtils.floatNumber("1234567890$.0"));
+    }
+
+    @Test
+    public void testFloatNumberSize(){
+        Assert.assertTrue("floatNumber is -123456789.0 size" , ValidatorUtils.floatNumber("-123456789.0",12));
+        Assert.assertTrue("floatNumber is 1234567890.0" , ValidatorUtils.floatNumber("1234567890.0",12));
+        Assert.assertTrue("floatNumber is 1234567890.0234" , ValidatorUtils.floatNumber("1234567890.0234",20));
+        Assert.assertTrue("floatNumber is 1234567890.000000" , ValidatorUtils.floatNumber("1234567890.000000",20));
+        Assert.assertTrue("floatNumber is 1234567890.0" , ValidatorUtils.floatNumber("1234567890.00012",20));
+        Assert.assertTrue("floatNumber is    1234567890.0" , ValidatorUtils.floatNumber("   1234567890.0",20));
+        Assert.assertTrue("floatNumber is    1234567890.0    " , ValidatorUtils.floatNumber("   1234567890.0   ",20));
+        Assert.assertTrue("floatNumber is 0.0" , ValidatorUtils.floatNumber("0.0",3));
+        Assert.assertTrue("floatNumber is -0.0" , ValidatorUtils.floatNumber("-0.0",4));
+        Assert.assertFalse("floatNumber is 123 4567890" , ValidatorUtils.floatNumber("123 4567890.0",20));
+        Assert.assertFalse("floatNumber is 123.4567890.0" , ValidatorUtils.floatNumber("123.45678900.0",20));
+        Assert.assertFalse("floatNumber is 123.4567890" , ValidatorUtils.floatNumber("123.45678900",10));
+        Assert.assertFalse("floatNumber is +1234567890" , ValidatorUtils.floatNumber("+1234567890.0",20));
+        Assert.assertFalse("floatNumber is --1234567890" , ValidatorUtils.floatNumber("--1234567890.0",20));
+        Assert.assertFalse("floatNumber is 1234567890$" , ValidatorUtils.floatNumber("1234567890$.0",20));
+    }
+
+
+    @Test
+    public void testZipCode(){
+        Assert.assertTrue("zipcode is 03123" , ValidatorUtils.zipcode("03123"));
+        Assert.assertTrue("zipcode is 138-225" , ValidatorUtils.zipcode("138-225"));
+        Assert.assertTrue("zipcode is    12345" , ValidatorUtils.zipcode("   12345"));
+        Assert.assertTrue("zipcode is    123-345    " , ValidatorUtils.zipcode("   123-345   "));
+        Assert.assertFalse("zipcode is 013123" , ValidatorUtils.zipcode("013123"));
+        Assert.assertFalse("zipcode is asdfg" , ValidatorUtils.zipcode("asdfg"));
+        Assert.assertFalse("zipcode is a38-225" , ValidatorUtils.zipcode("a38-225"));
+        Assert.assertFalse("zipcode is 1138-225" , ValidatorUtils.zipcode("1138-225"));
+        Assert.assertFalse("zipcode is    1234 5" , ValidatorUtils.zipcode("   1234 5"));
+        Assert.assertFalse("zipcode is    123_345    " , ValidatorUtils.zipcode("   123_345   "));
+
+
+    }
+
+
+    @Test
+    public void testUrl(){
+        Assert.assertTrue("url is https://calendar.google.com/calendar/render#main_7" , ValidatorUtils.url("https://calendar.google.com/calendar/render#main_7"));
+        Assert.assertTrue("url is http://calendar.google.com/calendar/render#main_7" , ValidatorUtils.url("http://calendar.google.com/calendar/render#main_7"));
+        Assert.assertTrue("url is    https://calendar.google.com/calendar/render#main_7" , ValidatorUtils.url("   https://calendar.google.com/calendar/render#main_7"));
+        Assert.assertTrue("url is    http://calendar.google.com/calendar/render#main_7    " , ValidatorUtils.url("   http://calendar.google.com/calendar/render#main_7   "));
+        Assert.assertFalse("url is https://calendar. google.com/calendar/render#main_7" , ValidatorUtils.url("https://calendar. google.com/calendar/render#main_7"));
+        Assert.assertFalse("url is https://calendar..google.com/calendar/render#main_7" , ValidatorUtils.url("https://calendar..google.com/calendar/render#main_7"));
+        Assert.assertFalse("url is fps://calendar..google.com/calendar/render#main_7" , ValidatorUtils.url("ftp://calendar.google.com/calendar/render#main_7"));
+        Assert.assertFalse("url is http:///calendar..google.com/calendar/render#main_7" , ValidatorUtils.url("http:///calendar.google.com/calendar/render#main_7"));
+        Assert.assertFalse("url is calendar..google.com/calendar/render#main_7" , ValidatorUtils.url("calendar.google.com/calendar/render#main_7"));
+    }
 }
