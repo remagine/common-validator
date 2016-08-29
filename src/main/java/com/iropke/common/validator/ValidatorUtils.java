@@ -2,6 +2,8 @@ package com.iropke.common.validator;
 
 import java.util.regex.Pattern;
 
+import com.sun.org.apache.xalan.internal.lib.Extensions;
+
 /**
  * @author Arthur
  */
@@ -124,58 +126,60 @@ public class ValidatorUtils {
     }
 
     /**
-     *  ID 형식 validator, 공백문자불가 , 영문(대소문자) + 숫자 + "_"
+     *  ID 형식 validator, 공백문자불가 , 영문(대소문자) + 숫자 + "_" , 5글자이상 - 15글자이하 , 앞뒤공백 제거(src.trim())
      */
     public static boolean identifier(String src){
         if (src==null || src.trim().length() == 0) return false;
+        if (src.trim().length() < 5) return false;
+        if (src.trim().length() > 15) return false;
 
         return Pattern.matches(
                 "^[0-9a-zA-Z_]*$",
-                src);
+                src.trim());
     }
 
     /**
-     *  ID 형식 validator, 공백문자불가 , 영문(소문자) + 숫자 + "_"
+     *  ID 소문자 형식 validator, 공백문자불가 , 영문(소문자) + 숫자 + "_", 5글자이상 - 15글자이하 , 앞뒤공백 제거(src.trim())
      */
     public static boolean identifierLower(String src){
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
                 "^[0-9a-z_]*$",
-                src);
+                src.trim());
     }
 
     /**
-     *  ID 형식 validator, 공백문자불가 , 영문(대문자) + 숫자 + "_"
+     *  ID 대문자 형식 validator, 공백문자불가 , 영문(대문자) + 숫자 + "_", 5글자이상 - 15글자이하 , 앞뒤공백 제거(src.trim())
      */
     public static boolean identifierUpper(String src){
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
                 "^[0-9A-Z_]*$",
-                src);
+                src.trim());
     }
 
     /**
-     *  CSS 형식 validator, 공백문자불가 , 영문(대소문자) + 숫자 + "_" + "-"
+     *  CSS 형식 validator, 공백문자불가 , 숫자시작불가, 영문(대소문자) + 숫자 + "_" + "-" , 앞뒤공백 제거(src.trim())
      */
     public static boolean cssClassName(String src){
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
-                "^[0-9A-Z_-]*$",
-                src);
+                "^-?[_a-zA-Z]+[_a-zA-Z0-9-]*$",
+                src.trim());
     }
 
     /**
-     *  숫자 형식 validator, 공백문자불가 , 앞에 0이 붙어도 상관없음(오직 양수만)
+     *  숫자 형식 validator, 공백문자불가 , 앞에 0이 붙어도 상관없음(오직 양수만) , 앞뒤공백 제거(src.trim())
      */
     public static boolean number(String src){
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
                 "^[0-9]*$",
-                src);
+                src.trim());
     }
 
     /**
@@ -185,7 +189,7 @@ public class ValidatorUtils {
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
-                "^[-]?(0|[1-9][0-9]*)*$",
+                "^-?(0|[1-9][0-9]*)*$",
                 src);
     }
 
@@ -196,7 +200,7 @@ public class ValidatorUtils {
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
-                "^[-]?(0|[1-9][0-9]*)(\\.[0-9]+)$",
+                "^-?(0|[1-9][0-9]*)(\\.[0-9]+)$",
                 src);
     }
 
@@ -227,9 +231,47 @@ public class ValidatorUtils {
 
 
     /**
-     *   url 형식 validator, http:// & https://
+     *   url 형식 validator, http:// & https:// only
      */
     public static boolean url(String src){
+        if (src==null || src.trim().length() == 0) return false;
+
+
+        return Pattern.matches(
+                "^(http://|https://)(\\/\\w+)+\\.\\w+(\\?(\\w+=[\\w\\d]+(&\\w+=[\\w\\d]+)+)+)*$",
+                src);
+    }
+
+    /**
+     *   path 형식 validator, File 경로 확인
+     */
+    public static boolean path(String src){
+        if (src==null || src.trim().length() == 0) return false;
+
+
+        return Pattern.matches(
+                "^()"
+                + "$",
+                src);
+    }
+
+    /**
+     *   path 형식 validator, File 경로 확인
+     */
+    public static boolean path(String src, Extensions...extensions){
+        if (src==null || src.trim().length() == 0) return false;
+
+
+        return Pattern.matches(
+                "^()"
+                + "$",
+                src);
+    }
+
+    /**
+     *   imagePath 형식 validator, image File 경로 확인
+     */
+    public static boolean imagePath(String src){
         if (src==null || src.trim().length() == 0) return false;
 
 

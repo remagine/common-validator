@@ -133,6 +133,119 @@ public class ValidatorBasicTest {
         Assert.assertFalse("alphanum is AB CD" , ValidatorUtils.alphanum("AB CD"));
         Assert.assertFalse("alphanum is ab cd" , ValidatorUtils.alphanum("ab cd"));
         Assert.assertFalse("alphanum is ABCDㄱ" , ValidatorUtils.alphanum("ABCDㄱ"));
-        Assert.assertFalse("alphanum is AB CD" , ValidatorUtils.alphanum("ABCD"));
+        Assert.assertFalse("alphanum is AB CD" , ValidatorUtils.alphanum("AB CD"));
+    }
+
+    @Test
+    public void testAlphanumLower(){
+        Assert.assertTrue("alphanumLower is abcd" , ValidatorUtils.alphanumLower("abcd"));
+        Assert.assertTrue("alphanumLower is 1234" , ValidatorUtils.alphanumLower("1234"));
+        Assert.assertTrue("alphanumLower is asdf1234" , ValidatorUtils.alphanumLower("asdf1234"));
+        Assert.assertTrue("alphanumLower is    asdf1234   " , ValidatorUtils.alphanumLower("   asdf1234   "));
+        Assert.assertFalse("alphanumLower is AaBbCcDd" , ValidatorUtils.alphanumLower("AaBbCcDd"));
+        Assert.assertFalse("alphanumLower is ABCD1234" , ValidatorUtils.alphanumLower("ABCD1234"));
+        Assert.assertFalse("alphanumLower is AaBbCcDd1234" , ValidatorUtils.alphanumLower("AaBbCcDd1234"));
+        Assert.assertFalse("alphanumLower is      AaBbCcDd1234     " , ValidatorUtils.alphanumLower("    AaBbCcDd1234      "));
+        Assert.assertFalse("alphanumLower is AB CD" , ValidatorUtils.alphanumLower("AB CD"));
+        Assert.assertFalse("alphanumLower is ab cd" , ValidatorUtils.alphanumLower("ab cd"));
+        Assert.assertFalse("alphanumLower is ABCDㄱ" , ValidatorUtils.alphanumLower("ABCDㄱ"));
+        Assert.assertFalse("alphanumLower is AB CD" , ValidatorUtils.alphanumLower("ABCD"));
+    }
+
+    @Test
+    public void testAlphanumUpper(){
+        Assert.assertTrue("alphanumUpper is ABCD" , ValidatorUtils.alphanumUpper("ABCD"));
+        Assert.assertTrue("alphanumUpper is 1234" , ValidatorUtils.alphanumUpper("1234"));
+        Assert.assertTrue("alphanumUpper is ABCD1234" , ValidatorUtils.alphanumUpper("ABCD1234"));
+        Assert.assertTrue("alphanumUpper is    ABCD1234   " , ValidatorUtils.alphanumUpper("   ABCD1234   "));
+        Assert.assertFalse("alphanumUpper is AaBbCcDd" , ValidatorUtils.alphanumUpper("AaBbCcDd"));
+        Assert.assertFalse("alphanumUpper is ~ABCD1234" , ValidatorUtils.alphanumUpper("~ABCD1234"));
+        Assert.assertFalse("alphanumUpper is AaBbCcDd1234" , ValidatorUtils.alphanumUpper("AaBbCcDd1234"));
+        Assert.assertFalse("alphanumUpper is      AaBbCcDd1234     " , ValidatorUtils.alphanumUpper("    AaBbCcDd1234      "));
+        Assert.assertFalse("alphanumUpper is AB CD" , ValidatorUtils.alphanumUpper("AB CD"));
+        Assert.assertFalse("alphanumUpper is ab cd" , ValidatorUtils.alphanumUpper("ab cd"));
+        Assert.assertFalse("alphanumUpper is ABCDㄱ" , ValidatorUtils.alphanumUpper("ABCDㄱ"));
+        Assert.assertFalse("alphanumUpper is AB CD" , ValidatorUtils.alphanumUpper("AB CD"));
+    }
+
+    @Test
+    public void testIdentifier(){
+        Assert.assertTrue("identifier is abcd" , ValidatorUtils.identifier("abcde"));
+        Assert.assertTrue("identifier is 1234" , ValidatorUtils.identifier("12345"));
+        Assert.assertTrue("identifier is asdf1234" , ValidatorUtils.identifier("asdf1234"));
+        Assert.assertTrue("identifier is    asdf1234   " , ValidatorUtils.identifier("   asdf1234   "));
+        Assert.assertTrue("identifier is    asdfABCD1234   " , ValidatorUtils.identifier("   asdfABCD1234   "));
+        Assert.assertTrue("identifier is    asdfABC_D123_4   " , ValidatorUtils.identifier("   asdfABC_D123_4   "));
+        Assert.assertFalse("identifier is AaBb?CcDd" , ValidatorUtils.identifier("AaBb?CcDd"));
+        Assert.assertFalse("identifier is ABCD@1234" , ValidatorUtils.identifier("ABCD@1234"));
+        Assert.assertFalse("identifier is AaBbCcDd1234-" , ValidatorUtils.identifier("AaBbCcDd1234-"));
+        Assert.assertFalse("identifier is AaBbCcDd12345678" , ValidatorUtils.identifier("AaBbCcDd12345678"));
+        Assert.assertFalse("identifier is AB CD" , ValidatorUtils.identifier("AB CD"));
+        Assert.assertFalse("identifier is ab cd" , ValidatorUtils.identifier("ab cd"));
+        Assert.assertFalse("identifier is ABCDㄱ" , ValidatorUtils.identifier("ABCDㄱ"));
+        Assert.assertFalse("identifier is AB CD" , ValidatorUtils.identifier("ABCD"));
+    }
+
+    @Test
+    public void testidentifierLower(){
+        Assert.assertTrue("identifierLower is abcde" , ValidatorUtils.identifierLower("abcde"));
+        Assert.assertTrue("identifierLower is 1234" , ValidatorUtils.identifierLower("12345"));
+        Assert.assertTrue("identifierLower is asdf1234" , ValidatorUtils.identifierLower("asdf1234"));
+        Assert.assertTrue("identifierLower is    asdf1234   " , ValidatorUtils.identifierLower("   asdf1234   "));
+        Assert.assertTrue("identifierLower is    asdf_a123_4   " , ValidatorUtils.identifierLower("   asdf_a123_4   "));
+        Assert.assertFalse("identifierLower is ab?cd" , ValidatorUtils.identifierLower("ab?cd"));
+        Assert.assertFalse("identifierLower is abcd@1234" , ValidatorUtils.identifierLower("abcd@1234"));
+        Assert.assertFalse("identifierLower is AaBbCcDd1234-" , ValidatorUtils.identifierLower("AaBbCcDd1234-"));
+        Assert.assertFalse("identifierLower is AaBbCcDd12345678" , ValidatorUtils.identifierLower("AaBbCcDd12345678"));
+        Assert.assertFalse("identifierLower is ABCD" , ValidatorUtils.identifierLower("ABCD"));
+        Assert.assertFalse("identifierLower is ab cd" , ValidatorUtils.identifierLower("ab cd"));
+        Assert.assertFalse("identifierLower is abcdㄱ" , ValidatorUtils.identifierLower("abcdㄱ"));
+        Assert.assertFalse("identifierLower is ab cd" , ValidatorUtils.identifierLower("ab cd"));
+    }
+
+    @Test
+    public void testIdentifierUpper(){
+        Assert.assertTrue("identifierUpper is ABCDE" , ValidatorUtils.identifierUpper("ABCDE"));
+        Assert.assertTrue("identifierUpper is 12345" , ValidatorUtils.identifierUpper("12345"));
+        Assert.assertTrue("identifierUpper is ASDF1234" , ValidatorUtils.identifierUpper("ASDF1234"));
+        Assert.assertTrue("identifierUpper is    ASDF1234   " , ValidatorUtils.identifierUpper("   ASDF1234   "));
+        Assert.assertTrue("identifierUpper is    _A_BCD1234   " , ValidatorUtils.identifierUpper("   _A_BCD1234   "));
+        Assert.assertTrue("identifierUpper is    ABC_D123_4   " , ValidatorUtils.identifierUpper("   ABC_D123_4   "));
+        Assert.assertFalse("identifierUpper is AaBb?CcDd" , ValidatorUtils.identifierUpper("AaBb?CcDd"));
+        Assert.assertFalse("identifierUpper is ABCD@1234" , ValidatorUtils.identifierUpper("ABCD@1234"));
+        Assert.assertFalse("identifierUpper is AaBbCcDd1234-" , ValidatorUtils.identifierUpper("AaBbCcDd1234-"));
+        Assert.assertFalse("identifierUpper is AaBbCcDd12345678" , ValidatorUtils.identifierUpper("AaBbCcDd12345678"));
+        Assert.assertFalse("identifierUpper is AB CD" , ValidatorUtils.identifierUpper("AB CD"));
+        Assert.assertFalse("identifierUpper is ab cd" , ValidatorUtils.identifierUpper("ab cd"));
+        Assert.assertFalse("identifierUpper is ABCDㄱ" , ValidatorUtils.identifierUpper("ABCDㄱ"));
+        Assert.assertFalse("identifierUpper is abcd" , ValidatorUtils.identifierUpper("abcd"));
+    }
+
+    @Test
+    public void testCssClassName(){
+        Assert.assertTrue("cssClassName is exp-tbl-h" , ValidatorUtils.cssClassName("exp-tbl-h"));
+        Assert.assertTrue("cssClassName is exp-tbl-h" , ValidatorUtils.cssClassName("EXP-TBL-H"));
+        Assert.assertTrue("cssClassName is exp-tbl-cont" , ValidatorUtils.cssClassName("exp-tbl-cont"));
+        Assert.assertTrue("cssClassName is apply_btn" , ValidatorUtils.cssClassName("apply_btn"));
+        Assert.assertTrue("cssClassName is    APPLY-BTN   " , ValidatorUtils.cssClassName("   APPLY-BTN   "));
+        Assert.assertTrue("cssClassName is    _a_bcd1234   " , ValidatorUtils.cssClassName("   a_bcd1234   "));
+        Assert.assertFalse("cssClassName is    selectbox select-layer   " , ValidatorUtils.cssClassName("   selectbox select-layer   "));
+        Assert.assertFalse("cssClassName is 1exp-tbl-h" , ValidatorUtils.cssClassName("1exp-tbl-h"));
+        Assert.assertFalse("cssClassName is ?exp-tbl-h" , ValidatorUtils.cssClassName("?exp-tbl-h"));
+        Assert.assertFalse("cssClassName is exp-t bl-h" , ValidatorUtils.cssClassName("exp-t bl-h"));
+        Assert.assertFalse("cssClassName is exp-tbl-h$" , ValidatorUtils.cssClassName("exp-tbl-h$"));
+    }
+
+    @Test
+    public void testNumber(){
+        Assert.assertTrue("number is 0123456789" , ValidatorUtils.number("0123456789"));
+        Assert.assertTrue("number is 1234567890" , ValidatorUtils.number("1234567890"));
+        Assert.assertTrue("number is    1234567890" , ValidatorUtils.number("   1234567890"));
+        Assert.assertTrue("number is    1234567890    " , ValidatorUtils.number("   1234567890   "));
+        Assert.assertFalse("number is 123 4567890" , ValidatorUtils.number("123 4567890"));
+        Assert.assertFalse("number is 123.4567890" , ValidatorUtils.number("123.4567890"));
+        Assert.assertFalse("number is +1234567890" , ValidatorUtils.number("+1234567890"));
+        Assert.assertFalse("number is -1234567890" , ValidatorUtils.number("-1234567890"));
+        Assert.assertFalse("number is 1234567890$" , ValidatorUtils.number("1234567890$"));
     }
 }
