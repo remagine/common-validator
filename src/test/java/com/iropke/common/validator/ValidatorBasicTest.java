@@ -352,6 +352,27 @@ public class ValidatorBasicTest {
     }
 
     @Test
+    public void testPathExtensions(){
+        Assert.assertTrue("path is d:/user/user.rythm" , ValidatorUtils.path("d:/user/user.rythm","rythm"));
+        Assert.assertTrue("path is d:/user/user.html" , ValidatorUtils.path("d:/user/user.html","html"));
+        Assert.assertTrue("path is d:\\user\\user.jsp" , ValidatorUtils.path("d:\\user\\user.jsp","jsp"));
+        Assert.assertTrue("path is \\user\\user.jsp" , ValidatorUtils.path("\\user\\user.jsp","js","jsp"));
+        Assert.assertTrue("path is /user/user/js.js" , ValidatorUtils.path("/user/user/js.js","js","html"));
+        Assert.assertFalse("path is d:/user/user.rythm" , ValidatorUtils.path("d:/user/user.rythm","rythms","1"));
+        Assert.assertFalse("path is /user/user/js.js" , ValidatorUtils.path("/user/user/js.js","html"));
+        Assert.assertFalse("path is /user/user/js.js" , ValidatorUtils.path("/user/user/js.js","html","jsp"));
+        Assert.assertFalse("path is    C:\folder\test.txt.txt\testing  " , ValidatorUtils.path("   C:\folder\test.txt.txt\testing   ","js","html"));
+        Assert.assertFalse("path is d:\\" , ValidatorUtils.path("d:\\","jpg","xml"));
+        Assert.assertFalse("path is d:/" , ValidatorUtils.path("d:/"));
+        Assert.assertFalse("path is d:\\," , ValidatorUtils.path("d:\\,"));
+        Assert.assertFalse("path is d:///" , ValidatorUtils.path("d:///"));
+        Assert.assertFalse("path is $:/user/user.html" , ValidatorUtils.path("$:/user/user.html"));
+        Assert.assertFalse("path is d::\\user\\user.jsp" , ValidatorUtils.path("d::\\user\\user.jsp"));
+        Assert.assertFalse("path is    ~C:\folder\test.txt.txt\testing  " , ValidatorUtils.path("   ~C:\folder\test.txt.txt\testing   "));
+        Assert.assertFalse("path is /user|user/js.js" , ValidatorUtils.path("/user|user/js.js"));
+    }
+
+    @Test
     public void testImagePath(){
         Assert.assertTrue("imagePath is d:/user/user.jpeg" , ValidatorUtils.imagePath("d:/user/user.jpeg"));
         Assert.assertTrue("imagePath is d:/user/user.jpg" , ValidatorUtils.imagePath("d:/user/user.jpg"));

@@ -253,15 +253,26 @@ public class ValidatorUtils {
     }
 
     /**
-     *   path 형식 validator, File 경로 확인
+     *   path 형식 validator, File 경로 확인 , 주어진 확장자의 파일인지 확인 , 앞뒤공백 제거(src.trim())
      */
     public static boolean path(String src, String...extensions){
         if (src==null || src.trim().length() == 0) return false;
+        if (extensions==null || extensions.length == 0) return false;
 
+        String str = "";
+        String item = "";
+        str = "^(([a-zA-Z]:)|((\\\\|/){1,2}\\w+)\\$?)((\\\\|/)(\\w[\\w ]*.*))+\\.(" ;
+        for(int i =0; i < extensions.length ; i++){
+            item = extensions[i];
+            str += item;
+            str += "|";
+            if( i == extensions.length-1){
+                str += ")$";
+            }
+        }
 
         return Pattern.matches(
-                "^()"
-                + "$",
+                str,
                 src);
     }
 
