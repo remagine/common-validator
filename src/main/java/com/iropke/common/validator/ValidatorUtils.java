@@ -2,8 +2,6 @@ package com.iropke.common.validator;
 
 import java.util.regex.Pattern;
 
-import com.sun.org.apache.xalan.internal.lib.Extensions;
-
 /**
  * @author Arthur
  */
@@ -183,30 +181,30 @@ public class ValidatorUtils {
     }
 
     /**
-     *   정수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false)
+     *   정수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false) , 앞뒤공백 제거(src.trim())
      */
     public static boolean integerNumber(String src){
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
                 "^-?(0|[1-9][0-9]*)*$",
-                src);
+                src.trim());
     }
 
     /**
-     *   실수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false, 숫자 자리수 제한 X)
+     *   실수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false, 숫자 자리수 제한 X), 앞뒤공백 제거(src.trim())
      */
     public static boolean floatNumber(String src){
         if (src==null || src.trim().length() == 0) return false;
 
         return Pattern.matches(
                 "^-?(0|[1-9][0-9]*)(\\.[0-9]+)$",
-                src);
+                src.trim());
     }
 
 
     /**
-     *   실수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false, 숫자 자리수 제한 있음)
+     *   실수 숫자 형식 validator, 음수 - 0 - 양수 (단 0으로 시작하는 2자리 이상 수는 false, 숫자 자리수 제한 있음), 앞뒤공백 제거(src.trim())
      */
     public static boolean floatNumber(String src, int size){
         if (src==null || src.trim().length() == 0) return false;
@@ -214,11 +212,11 @@ public class ValidatorUtils {
 
         return Pattern.matches(
                 "^[-]?(0|[1-9][0-9]*)(\\.[0-9]+)$",
-                src);
+                src.trim());
     }
 
     /**
-     *   우편변호 형식 validator, ###-### 구우편번호 or 5자리 신우편번호
+     *   우편변호 형식 validator, ###-### 구우편번호 or 5자리 신우편번호, 앞뒤공백 제거(src.trim())
      */
     public static boolean zipcode(String src){
         if (src==null || src.trim().length() == 0) return false;
@@ -226,39 +224,38 @@ public class ValidatorUtils {
 
         return Pattern.matches(
                 "^\\d{3}-\\d{3}|\\d{5}$",
-                src);
+                src.trim());
     }
 
 
     /**
-     *   url 형식 validator, http:// & https:// only
+     *   url 형식 validator, http:// & https:// only , 앞뒤공백 제거(src.trim())
      */
     public static boolean url(String src){
         if (src==null || src.trim().length() == 0) return false;
 
 
         return Pattern.matches(
-                "^(http://|https://)(\\/\\w+)+\\.\\w+(\\?(\\w+=[\\w\\d]+(&\\w+=[\\w\\d]+)+)+)*$",
-                src);
+                "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$",
+                src.trim());
     }
 
     /**
-     *   path 형식 validator, File 경로 확인
+     *   path 형식 validator, File 경로 확인 (D:\directoryname\testing\text.txt ,\john-desktop\tempdir\ssh.ppk) , 앞뒤공백 제거(src.trim())
      */
     public static boolean path(String src){
         if (src==null || src.trim().length() == 0) return false;
 
 
         return Pattern.matches(
-                "^()"
-                + "$",
-                src);
+                "^(([a-zA-Z]:)|((\\\\|/){1,2}\\w+)\\$?)((\\\\|/)(\\w[\\w ]*.*))+\\.([a-zA-Z0-9]*)$",
+                src.trim());
     }
 
     /**
      *   path 형식 validator, File 경로 확인
      */
-    public static boolean path(String src, Extensions...extensions){
+    public static boolean path(String src, String...extensions){
         if (src==null || src.trim().length() == 0) return false;
 
 
@@ -269,16 +266,15 @@ public class ValidatorUtils {
     }
 
     /**
-     *   imagePath 형식 validator, image File 경로 확인
+     *   imagePath 형식 validator, image File 경로 확인 (jpeg,jpg,gif,png) , 앞뒤공백 제거(src.trim())
      */
     public static boolean imagePath(String src){
         if (src==null || src.trim().length() == 0) return false;
 
 
         return Pattern.matches(
-                "^()"
-                + "$",
-                src);
+                "(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\\.(?:jpe?g|gif|png))(?:\\?([^#]*))?(?:#(.*))?",
+                src.trim());
     }
 
 }
