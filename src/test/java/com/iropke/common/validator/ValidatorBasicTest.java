@@ -31,7 +31,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testEmail(){
+    public void testEmail() {
         Assert.assertTrue("email is remagine@naver.com" , ValidatorUtils.email("remagine@naver.com"));
         Assert.assertTrue("email is remagine@naver.co.kr" , ValidatorUtils.email("remagine@naver.co.kr"));
         Assert.assertTrue("email is 0remagine@naver.co.kr" , ValidatorUtils.email("0remagine@naver.co.kr"));
@@ -42,7 +42,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testPhone(){
+    public void testPhone() {
         Assert.assertTrue("phone is 02-123-1234" , ValidatorUtils.phone("02-123-1234"));
         Assert.assertTrue("phone is 02-1231-1234" , ValidatorUtils.phone("02-1231-1234"));
         Assert.assertTrue("phone is 023-123-1234" , ValidatorUtils.phone("023-123-1234"));
@@ -56,7 +56,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testMobile(){
+    public void testMobile() {
         Assert.assertTrue("mobile is 010-123-1234" , ValidatorUtils.mobile("010-123-1234"));
         Assert.assertTrue("mobile is 010-1231-1234" , ValidatorUtils.mobile("010-1231-1234"));
         Assert.assertTrue("mobile is 011-1231-1234" , ValidatorUtils.mobile("011-1231-1234"));
@@ -77,7 +77,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testAlpha(){
+    public void testAlpha() {
         Assert.assertTrue("alpha is aAbBcCdD" , ValidatorUtils.alpha("aAbBcCdD"));
         Assert.assertTrue("alpha is aAbBcCdDzZ" , ValidatorUtils.alpha("aAbBcCdDzZ"));
         Assert.assertTrue("alpha is     aAbBcCdDzZ" , ValidatorUtils.alpha("   aAbBcCdDzZ"));
@@ -92,7 +92,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testAlphaLower(){
+    public void testAlphaLower() {
         Assert.assertTrue("alphaLower is abcd" , ValidatorUtils.alphaLower("abcd"));
         Assert.assertTrue("alphaLower is    abcd" , ValidatorUtils.alphaLower("   abcd"));
         Assert.assertTrue("alphaLower is abcd   " , ValidatorUtils.alphaLower("abcd   "));
@@ -107,7 +107,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testAlphaUpper(){
+    public void testAlphaUpper() {
         Assert.assertTrue("alphaUpper is ABCD" , ValidatorUtils.alphaUpper("ABCD"));
         Assert.assertTrue("alphaUpper is ABCDEFGZ" , ValidatorUtils.alphaUpper("ABCDEFGZ"));
         Assert.assertTrue("alphaUpper is ABCDEFGZ     " , ValidatorUtils.alphaUpper("ABCDEFGZ       "));
@@ -122,7 +122,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testAlphanum(){
+    public void testAlphanum() {
         Assert.assertTrue("alphanum is ABCD" , ValidatorUtils.alphanum("ABCD"));
         Assert.assertTrue("alphanum is 1234" , ValidatorUtils.alphanum("1234"));
         Assert.assertTrue("alphanum is asdf" , ValidatorUtils.alphanum("asdf"));
@@ -137,7 +137,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testAlphanumLower(){
+    public void testAlphanumLower() {
         Assert.assertTrue("alphanumLower is abcd" , ValidatorUtils.alphanumLower("abcd"));
         Assert.assertTrue("alphanumLower is 1234" , ValidatorUtils.alphanumLower("1234"));
         Assert.assertTrue("alphanumLower is asdf1234" , ValidatorUtils.alphanumLower("asdf1234"));
@@ -153,7 +153,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testAlphanumUpper(){
+    public void testAlphanumUpper() {
         Assert.assertTrue("alphanumUpper is ABCD" , ValidatorUtils.alphanumUpper("ABCD"));
         Assert.assertTrue("alphanumUpper is 1234" , ValidatorUtils.alphanumUpper("1234"));
         Assert.assertTrue("alphanumUpper is ABCD1234" , ValidatorUtils.alphanumUpper("ABCD1234"));
@@ -169,7 +169,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testIdentifier(){
+    public void testIdentifier() {
         Assert.assertTrue("identifier is abcd" , ValidatorUtils.identifier("abcde"));
         Assert.assertTrue("identifier is 1234" , ValidatorUtils.identifier("12345"));
         Assert.assertTrue("identifier is asdf1234" , ValidatorUtils.identifier("asdf1234"));
@@ -179,15 +179,13 @@ public class ValidatorBasicTest {
         Assert.assertFalse("identifier is AaBb?CcDd" , ValidatorUtils.identifier("AaBb?CcDd"));
         Assert.assertFalse("identifier is ABCD@1234" , ValidatorUtils.identifier("ABCD@1234"));
         Assert.assertFalse("identifier is AaBbCcDd1234-" , ValidatorUtils.identifier("AaBbCcDd1234-"));
-        Assert.assertFalse("identifier is AaBbCcDd12345678" , ValidatorUtils.identifier("AaBbCcDd12345678"));
         Assert.assertFalse("identifier is AB CD" , ValidatorUtils.identifier("AB CD"));
         Assert.assertFalse("identifier is ab cd" , ValidatorUtils.identifier("ab cd"));
         Assert.assertFalse("identifier is ABCDㄱ" , ValidatorUtils.identifier("ABCDㄱ"));
-        Assert.assertFalse("identifier is AB CD" , ValidatorUtils.identifier("ABCD"));
     }
 
     @Test
-    public void testidentifierLower(){
+    public void testidentifierLower() {
         Assert.assertTrue("identifierLower is abcde" , ValidatorUtils.identifierLower("abcde"));
         Assert.assertTrue("identifierLower is 1234" , ValidatorUtils.identifierLower("12345"));
         Assert.assertTrue("identifierLower is asdf1234" , ValidatorUtils.identifierLower("asdf1234"));
@@ -204,7 +202,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testIdentifierUpper(){
+    public void testIdentifierUpper() {
         Assert.assertTrue("identifierUpper is ABCDE" , ValidatorUtils.identifierUpper("ABCDE"));
         Assert.assertTrue("identifierUpper is 12345" , ValidatorUtils.identifierUpper("12345"));
         Assert.assertTrue("identifierUpper is ASDF1234" , ValidatorUtils.identifierUpper("ASDF1234"));
@@ -222,7 +220,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testCssClassName(){
+    public void testCssClassName() {
         Assert.assertTrue("cssClassName is exp-tbl-h" , ValidatorUtils.cssClassName("exp-tbl-h"));
         Assert.assertTrue("cssClassName is exp-tbl-h" , ValidatorUtils.cssClassName("EXP-TBL-H"));
         Assert.assertTrue("cssClassName is exp-tbl-cont" , ValidatorUtils.cssClassName("exp-tbl-cont"));
@@ -237,7 +235,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testNumber(){
+    public void testNumber() {
         Assert.assertTrue("number is 0123456789" , ValidatorUtils.number("0123456789"));
         Assert.assertTrue("number is 1234567890" , ValidatorUtils.number("1234567890"));
         Assert.assertTrue("number is    1234567890" , ValidatorUtils.number("   1234567890"));
@@ -250,7 +248,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testIntegerNumber(){
+    public void testIntegerNumber() {
         Assert.assertTrue("integerNumber is -123456789" , ValidatorUtils.integerNumber("-123456789"));
         Assert.assertTrue("integerNumber is 1234567890" , ValidatorUtils.integerNumber("1234567890"));
         Assert.assertTrue("integerNumber is    1234567890" , ValidatorUtils.integerNumber("   1234567890"));
@@ -265,7 +263,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testFloatNumber(){
+    public void testFloatNumber() {
         Assert.assertTrue("floatNumber is -123456789.0" , ValidatorUtils.floatNumber("-123456789.0"));
         Assert.assertTrue("floatNumber is 1234567890.0" , ValidatorUtils.floatNumber("1234567890.0"));
         Assert.assertTrue("floatNumber is 1234567890.0234" , ValidatorUtils.floatNumber("1234567890.0234"));
@@ -283,7 +281,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testFloatNumberSize(){
+    public void testFloatNumberSize() {
         Assert.assertTrue("floatNumber is -123456789.0 size" , ValidatorUtils.floatNumber("-123456789.0",12));
         Assert.assertTrue("floatNumber is 1234567890.0" , ValidatorUtils.floatNumber("1234567890.0",12));
         Assert.assertTrue("floatNumber is 1234567890.0234" , ValidatorUtils.floatNumber("1234567890.0234",20));
@@ -303,7 +301,7 @@ public class ValidatorBasicTest {
 
 
     @Test
-    public void testZipCode(){
+    public void testZipCode() {
         Assert.assertTrue("zipcode is 03123" , ValidatorUtils.zipcode("03123"));
         Assert.assertTrue("zipcode is 138-225" , ValidatorUtils.zipcode("138-225"));
         Assert.assertTrue("zipcode is    12345" , ValidatorUtils.zipcode("   12345"));
@@ -320,7 +318,7 @@ public class ValidatorBasicTest {
 
 
     @Test
-    public void testUrl(){
+    public void testUrl() {
         Assert.assertTrue("url is https://calendar.google.com/calendar/render#main_7" , ValidatorUtils.url("https://calendar.google.com/calendar/render#main_7"));
         Assert.assertTrue("url is http://calendar.google.com/calendar/render#main_7" , ValidatorUtils.url("http://calendar.google.com/calendar/render#main_7"));
         Assert.assertTrue("url is    https://calendar.google.com/calendar/render#main_7" , ValidatorUtils.url("   https://calendar.google.com/calendar/render#main_7"));
@@ -334,7 +332,7 @@ public class ValidatorBasicTest {
 
 
     @Test
-    public void testPath(){
+    public void testPath() {
         Assert.assertTrue("path is d:/user/user.ryhtm" , ValidatorUtils.path("d:/user/user.ryhtm"));
         Assert.assertTrue("path is d:/user/user.html" , ValidatorUtils.path("d:/user/user.html"));
         Assert.assertTrue("path is d:\\user\\user.jsp" , ValidatorUtils.path("d:\\user\\user.jsp"));
@@ -352,7 +350,7 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testPathExtensions(){
+    public void testPathExtensions() {
         Assert.assertTrue("path is d:/user/user.rythm" , ValidatorUtils.path("d:/user/user.rythm","rythm"));
         Assert.assertTrue("path is d:/user/user.html" , ValidatorUtils.path("d:/user/user.html","html"));
         Assert.assertTrue("path is d:\\user\\user.jsp" , ValidatorUtils.path("d:\\user\\user.jsp","jsp"));
@@ -373,14 +371,13 @@ public class ValidatorBasicTest {
     }
 
     @Test
-    public void testImagePath(){
+    public void testImagePath() {
         Assert.assertTrue("imagePath is d:/user/user.jpeg" , ValidatorUtils.imagePath("d:/user/user.jpeg"));
         Assert.assertTrue("imagePath is d:/user/user.jpg" , ValidatorUtils.imagePath("d:/user/user.jpg"));
         Assert.assertTrue("imagePath is d:\\user\\user.png" , ValidatorUtils.imagePath("d:\\user\\user.png"));
         Assert.assertTrue("imagePath is \\user\\user.gif" , ValidatorUtils.imagePath("\\user\\user.gif"));
         Assert.assertTrue("imagePath is /user/user/js.jpg" , ValidatorUtils.imagePath("/user/user/js.jpg"));
         Assert.assertTrue("imagePath is https://user\\user.gif" , ValidatorUtils.imagePath("https://user\\user.gif"));
-
         Assert.assertFalse("imagePath is d:/user/user.jpeg" , ValidatorUtils.imagePath("d:/user/user.img"));
         Assert.assertFalse("imagePath is d:/user/user.jpg" , ValidatorUtils.imagePath("d:/user/user.jsp"));
         Assert.assertFalse("imagePath is d:\\user\\user.png" , ValidatorUtils.imagePath("d:\\user\\user.html"));
