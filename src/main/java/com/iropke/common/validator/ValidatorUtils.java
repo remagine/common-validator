@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 public class ValidatorUtils {
 
     /**
-     * String 최소값 validato, 앞뒤공백 제거(src.trim())
+     * String 최소값 validator, 앞뒤공백 제거(src.trim())
      */
     public static boolean length(String src, int min) {
         if (StringUtils.isEmpty(src)) {
