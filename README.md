@@ -2,7 +2,7 @@
 
  gitlab프로젝트를 github으로 옮겼습니다.
 
- ## Ver 0.0.1
+## Ver 0.0.1
 
 
  - length(String src, int min, int max)
